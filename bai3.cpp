@@ -1,10 +1,11 @@
-//To chuc du lieu va giai bai toan tim duong di ngan nhat cua mot do thi vo huong
-//tao moi do thi , luu do thi vao file
-//mo do thi tu file da co
-//tim duong di ngan nhat, ket qua tim duoc luu vao mot file
-//xuat lan luot qua trinh tim ra duong di lon nhat 
+/*To chuc du lieu va giai bai toan tim duong di ngan nhat cua mot do thi vo huong
+tao moi do thi , luu do thi vao file
+mo do thi tu file da co
+tim duong di ngan nhat, ket qua tim duoc luu vao mot file
+xuat lan luot qua trinh tim ra duong di lon nhat */
 #include<iostream>
 #include<fstream>
+#include<vector>
 using namespace std;
 int n;
 //tao moi do thi , luu do thi vao file
@@ -68,9 +69,21 @@ struct  cap{
 	int Dinh;
 	int tong;
 };
-//tao mot vector luu lai cac dinh da qua
-// gan 1 dinh dau tien A 
-// tim duong di tuw A den cac dinh khac
-//so sanh de tim duong di ngan nhat tu A den x
-//tong1 =0
-//tim trong vector cac dinh chua duoc goi
+/*tao struct cap{Dinh,Tong}
+tao mot vector luu lai cac dinh da qua(de xet trong qua trinh xu li)
+Tao mot bien char kieu cap
+gan 1 dinh dau tien A vao char
+so sanh de tim ra duong di ngan nhat tu A toi diem tiep theo chua duoc chon
+xet cac dinh chua duoc chon
+kiem tra xem co duong di tu dinh duoc chon toi cac dinh con lai
+neu co duong di -> gan dinh dang xet
+ cho tong =c.tong +a[i][c.dinh]
+nguoc lai chon tong=0;
+kiem tra lan luot cac phan tu trong vector
+chon ra phan tu co tong nho nhat tru i=0 dua vao dschon*/
+vector <Cap> dschon;
+void TimDuong(char *){
+	Char Cap[i]=A;
+	a[10][10]
+	
+}
