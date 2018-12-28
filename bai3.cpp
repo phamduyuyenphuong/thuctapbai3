@@ -22,14 +22,14 @@ int main()
 	int n;
 	int a[10][10];
 	TaoMoi(a,n);
-		fi.open("duongdi.txt",ios::in);
+	fi.open("duongdi.txt",ios::in);
 	fi>>n;
 	DocFile(a,n);
 	XuatDt(a,n);
 	
 
 }
-void DocFile(int a[10][10],int n)
+void DocFile(int a[10][10],int n)//doc file da luu
 {
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < n; j++)
@@ -37,7 +37,7 @@ void DocFile(int a[10][10],int n)
 		fi.close();
 }
 
-void XuatDt(int a[10][10],int n){
+void XuatDt(int a[10][10],int n){// xuat file ra
 
 		for(int i = 0; i < n; i++)
 		  {
@@ -46,11 +46,11 @@ void XuatDt(int a[10][10],int n){
 		  cout<<endl;
 		  }
 }
-void TaoMoi(int a[10][10],int &n){
-	cout<<"nhap n..";
+void TaoMoi(int a[10][10],int &n){// cap nhat do thi moi
+	cout<<"nhap n..";// nhap dinh cua do thi
 	cin>>n;
-	fi.open("duongdi.txt",ios::out);
-	fi<<n<<endl;
+	fi.open("duongdi.txt",ios::out);// mo file duongdi.txt de ghi
+	fi<<n<<endl; // in so dinh vao
 	for(int i = 0; i < n; i++)
 	{
 		for(int j = 0; j < n; j++)
@@ -63,4 +63,14 @@ void TaoMoi(int a[10][10],int &n){
 		}
 	fi.close();
 }
-
+////tim duong di ngan nhat, ket qua tim duoc luu vao mot file
+struct  cap{
+	int Dinh;
+	int tong;
+};
+//tao mot vector luu lai cac dinh da qua
+// gan 1 dinh dau tien A 
+// tim duong di tuw A den cac dinh khac
+//so sanh de tim duong di ngan nhat tu A den x
+//tong1 =0
+//tim trong vector cac dinh chua duoc goi
