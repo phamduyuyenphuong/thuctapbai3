@@ -6,6 +6,10 @@ xuat lan luot qua trinh tim ra duong di lon nhat */
 #include<iostream>
 #include<fstream>
 #include<vector>
+#define MAX 50 
+#define TRUE 1 
+#define FALSE  0
+#define VOCUNG 10000000
 using namespace std;
 int n;
 //tao moi do thi , luu do thi vao file
@@ -15,18 +19,28 @@ void TaoMoi(int a[10][10],int &n);
 void DocFile(int a[10][10],int n);
 
 void XuatDt(int a[10][10],int n);
+ void TimDuong();
+void Result();
 
-
+int s;//dinh dau
+int t;//dinh cuoi
+char chon;
+int truoc[MAX];//mang danh dau duong di
+int d[MAX];//mang danh dau khoang cach
+int c[MAX][MAX];//ma tran trong so
+int chuaxet[MAX];//mang sanh dau dinhr da duoc gan nha dan
 int main()
 {
 	fflush(stdin);
-	int n;
+	int n;// so dinh cua do thi
 	int a[10][10];
 	TaoMoi(a,n);
 	fi.open("duongdi.txt",ios::in);
 	fi>>n;
 	DocFile(a,n);
 	XuatDt(a,n);
+	 TimDuong();
+ Result();
 	
 
 }
@@ -81,9 +95,49 @@ neu co duong di -> gan dinh dang xet
 nguoc lai chon tong=0;
 kiem tra lan luot cac phan tu trong vector
 chon ra phan tu co tong nho nhat tru i=0 dua vao dschon*/
-vector <Cap> dschon;
-void TimDuong(char *){
-	Char Cap[i]=A;
-	a[10][10]
-	
+void Result(){
+ cout<<"Duong di ngan nhat tu "<<(char)(s+'A'-1)<<" den "<<(char)(t + 'A' -1)<< " la"<<endl;
+ cout<<(char)(t + 'A' - 1)<<"<=";//in dinh cuoi duoi (dang char)
+ int i = truoc[t];
+ while (i != s){
+  cout<<(char)(i +'A' -1)<<"<=";//in in ra ket qua(dang char)
+  i = truoc[i];
+ }
+ cout<<(char)(s+'A' -1);//in dinh dau (dang char).
+ cout<<endl<<"Do dai duong di la : "<< d[t];
 }
+void TimDuong (){
+ int u, minp;
+ //khoi tao nhan dan tam thoi cho cac dinh
+ for (int v = 1; v <= n; v++){
+  d[v] = a[s][v];
+  truoc[v] = s;
+  chuaxet[v] = FALSE;
+ }
+ truoc[s] = 0;
+ d[s] = 0;
+ chuaxet[s] = TRUE;
+ //buoc lap
+ while (!chuaxet[t]) {
+  minp = VOCUNG;
+  //tìm dinh u sao cho d[u] nho nhat
+  for (int v = 1; v <= n; v++){
+   if ((!chuaxet[v]) && (minp > d[v])){
+    u = v;
+    minp = d[v];
+   }
+  }
+  chuaxet[u] = TRUE;// u la dinh co nhan tam thoi nho nhat 
+  if (!chuaxet[t]){
+   //gan nhan lai cho cac dinh
+   for (int v = 1; v <= n; v++){
+    if ((!chuaxet[v]) && (d[u] + a[u][v] < d[v])){
+     d[v] = d[u] + a[u][v];
+     truoc[v] = u;
+    }
+   }
+  }
+ }
+}
+
+
