@@ -20,15 +20,15 @@ void DocFile(int a[10][10],int n);
 
 void XuatDt(int a[10][10],int n);
  void TimDuong();
-void Result();
+void KetQua();
 
-int s;//dinh dau
-int t;//dinh cuoi
+int A;//dinh dau
+int F;//dinh cuoi
 char chon;
 int truoc[MAX];//mang danh dau duong di
 int d[MAX];//mang danh dau khoang cach
-int c[MAX][MAX];//ma tran trong so
-int chuaxet[MAX];//mang sanh dau dinhr da duoc gan nha dan
+int a[MAX][MAX];//ma tran trong so
+int chuaxet[MAX];//mang sanh dau dinh da duoc gan nha dan
 int main()
 {
 	fflush(stdin);
@@ -40,7 +40,7 @@ int main()
 	DocFile(a,n);
 	XuatDt(a,n);
 	 TimDuong();
- Result();
+ 	KetQua();
 	
 
 }
@@ -95,30 +95,20 @@ neu co duong di -> gan dinh dang xet
 nguoc lai chon tong=0;
 kiem tra lan luot cac phan tu trong vector
 chon ra phan tu co tong nho nhat tru i=0 dua vao dschon*/
-void Result(){
- cout<<"Duong di ngan nhat tu "<<(char)(s+'A'-1)<<" den "<<(char)(t + 'A' -1)<< " la"<<endl;
- cout<<(char)(t + 'A' - 1)<<"<=";//in dinh cuoi duoi (dang char)
- int i = truoc[t];
- while (i != s){
-  cout<<(char)(i +'A' -1)<<"<=";//in in ra ket qua(dang char)
-  i = truoc[i];
- }
- cout<<(char)(s+'A' -1);//in dinh dau (dang char).
- cout<<endl<<"Do dai duong di la : "<< d[t];
-}
+
 void TimDuong (){
  int u, minp;
  //khoi tao nhan dan tam thoi cho cac dinh
  for (int v = 1; v <= n; v++){
-  d[v] = a[s][v];
-  truoc[v] = s;
+  d[v] = a[A][v];
+  truoc[v] = A;
   chuaxet[v] = FALSE;
  }
- truoc[s] = 0;
- d[s] = 0;
- chuaxet[s] = TRUE;
+ truoc[A] = 0;
+ d[A] = 0;
+ chuaxet[A] = TRUE;
  //buoc lap
- while (!chuaxet[t]) {
+ while (!chuaxet[F]) {
   minp = VOCUNG;
   //tìm dinh u sao cho d[u] nho nhat
   for (int v = 1; v <= n; v++){
@@ -128,7 +118,7 @@ void TimDuong (){
    }
   }
   chuaxet[u] = TRUE;// u la dinh co nhan tam thoi nho nhat 
-  if (!chuaxet[t]){
+  if (!chuaxet[F]){
    //gan nhan lai cho cac dinh
    for (int v = 1; v <= n; v++){
     if ((!chuaxet[v]) && (d[u] + a[u][v] < d[v])){
@@ -138,6 +128,9 @@ void TimDuong (){
    }
   }
  }
+}
+void KetQua(){
+
 }
 
 
